@@ -1,5 +1,6 @@
 name: Update Gradle dependencies and plugins
 description: Uses com.markelliot.versions to update dependencies and plugins
+icon: arrow-up-circle
 inputs:
   push-to-repo-token:
     description: a GitHub Personal Access Token capable of pushing to the target repository
