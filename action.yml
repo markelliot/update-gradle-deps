@@ -53,7 +53,7 @@ runs:
         fi
         git config --local user.name '${{ inputs.commit-username }}'
         git config --local user.email '${{ inputs.commit-email }}'
-        git checkout -B auto/versions
+        git checkout -B "${{ inputs.working-branch }}"
         git commit -am '${{ inputs.commit-title }}'
 
         # only push changes if different
@@ -62,12 +62,7 @@ runs:
           exit 0
         fi
         git push origin -f '${{ inputs.working-branch }}'
-    - name: Create Pull Request
-      uses: repo-sync/pull-request@v2
-      with:
-        pr_title: "${{ inputs.pr-title }}"
-        destination_branch: "${{ inputs.primary-branch }}"
-        source_branch: "${{ inputs.working-branch }}"
-        github_token: "${{ inputs.push-to-repo-token }}"
-        pr_allow_empty: false
+        gh pr create -B "${{ inputs.primary-branch }}" --title "${{ inputs.pr-title }}"
+      env:
+        GITHUB_TOKEN: "${{ inputs.push-to-repo-token }}"
 
