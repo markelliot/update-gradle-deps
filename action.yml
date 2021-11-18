@@ -51,7 +51,7 @@ runs:
           echo "No updates detected"
           exit 0
         fi
-        git config --local user.name '${{ inputs.commit-username }}'
+        git config --local user.name '${{ inputs.commit-user }}'
         git config --local user.email '${{ inputs.commit-email }}'
         git checkout -B "${{ inputs.working-branch }}"
         git commit -am '${{ inputs.commit-title }}'
