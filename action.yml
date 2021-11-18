@@ -29,7 +29,7 @@ inputs:
   pr-title:
     description: the title to use for the PR
     required: true
-    default: Auto-udpate dependencies and plugins
+    default: Auto-update dependencies and plugins
 
 runs:
   using: composite
