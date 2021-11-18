@@ -35,12 +35,16 @@ runs:
   using: composite
   steps:
     - name: Check for new versions
+      shell: bash
       run: ./gradlew --no-daemon checkNewVersions
     - name: Apply version updates
+      shell: bash
       run: ./gradlew --no-daemon updateVersionsProps updatePlugins
     - name: Write lockfile
+      shell: bash
       run: ./gradlew --no-daemon --write-locks
     - name: Create branch and commit changes
+      shell: bash
       run: |
         # only commit if there are changes
         if [ -z "$(git status --porcelain)" ]; then
