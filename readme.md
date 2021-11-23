@@ -3,9 +3,9 @@ markelliot/update-gradle-deps@v1
 This action checks for updates to Java dependencies and Gradle plugins and submits a PR with
 any such updates. It works for Java projects that use Gradle as the build tooling and depends
 on the [`com.markelliot.versions`](https://github.com/markelliot/gradle-versions) Gradle plugin
-tasks `checkNewVersions`, `updateVersionsProps` and `updatePlugins`. Compatible projects will
-also be managing dependencies with a versions.props file (such as with the 
-`nebula.dependency-recommender` or `com.palantir.gradle-consistent-versions` plugins).
+tasks `checkNewVersions`, `updateVersionsProps`, `updatePlugins` and `updateGradleWrapper`.
+Compatible projects will also be managing dependencies with a versions.props file (such as with
+the `nebula.dependency-recommender` or `com.palantir.gradle-consistent-versions` plugins).
 
 In addition to updating versions.props and build script plugin references, this action will
 run `./gradlew --write-locks` to update any relevant lock files.
