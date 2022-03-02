@@ -47,7 +47,8 @@ runs:
           shell: bash
           run: |
               # only commit if there are changes
-              if [ -z "$(git status --porcelain)" ]; then
+              if [ -z "$(git status --porcelain)" ]
+              then
                 echo "No updates detected"
                 exit 0
               fi
@@ -57,7 +58,8 @@ runs:
               git commit -am '${{ inputs.commit-title }}'
 
               # only push changes if different
-              if [ -n "$(git ls-remote --exit-code origin '${{ inputs.working-branch }}')" && -z "$(git diff 'origin/${{ inputs.working-branch }}')" ]; then
+              if [ -n "$(git ls-remote --exit-code origin '${{ inputs.working-branch }}')" ] && [ -z "$(git diff 'origin/${{ inputs.working-branch }}')" ]
+              then
                 echo "No new updates since last update proposal"
                 exit 0
               fi
