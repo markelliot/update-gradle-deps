@@ -36,13 +36,13 @@ runs:
     steps:
         - name: Check for new versions
           shell: bash
-          run: ./gradlew --no-daemon checkNewVersions
+          run: ./gradlew checkNewVersions
         - name: Apply version updates
           shell: bash
-          run: ./gradlew --no-daemon updateVersionsProps updatePlugins updateGradleWrapper
+          run: ./gradlew updateVersionsProps updatePlugins updateGradleWrapper
         - name: Write lockfile
           shell: bash
-          run: ./gradlew --no-daemon --write-locks
+          run: ./gradlew --write-locks
         - name: Create branch and commit changes
           shell: bash
           run: |
