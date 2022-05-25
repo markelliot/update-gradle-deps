@@ -44,6 +44,7 @@ runs:
           shell: bash
           run: ./gradlew --write-locks
         - name: Create branch and commit changes
+          if: always()
           shell: bash
           run: |
               # only commit if there are changes
