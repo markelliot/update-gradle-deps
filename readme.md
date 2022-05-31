@@ -20,6 +20,9 @@ Note: a GitHub Personal Access Token with `repo` permission is required so that 
 PR triggers any other repository-defined actions. If you do not wish to trigger downstream
 actions you may use the action-supplied `GITHUB_TOKEN`.
 
+Note: you must set `fetch-depth` to `0` on the `actions/checkout` step to allow this action
+to force-overwrite the branch, should new dependencies or plugins be available.
+
 Configuration
 -------------
 Required configuration:
@@ -57,6 +60,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           token: ${{ secrets.GH_PUSH_TO_REPO_TOKEN }}
+          fetch-depth: 0
       - uses: actions/setup-java@v2
         with:
           java-version: '17'
