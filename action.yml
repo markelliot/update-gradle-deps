@@ -76,6 +76,6 @@ runs:
         gh pr create -B "${{ inputs.primary-branch }}" --title "${{ inputs.pr-title }}" --body "${BODY}" || true
 
         # update the PR body to set versions if different than creation
-        gh pr edit --body "${updates}"
+        gh pr edit --body "${BODY}"
       env:
         GITHUB_TOKEN: "${{ inputs.push-to-repo-token }}"
