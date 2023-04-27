@@ -81,7 +81,7 @@ runs:
         gh pr edit --body "${BODY}"
         if [ -n "${{ inputs.label }}" ];
         then
-          gh pr --label "${{ inputs.label }}"
+          gh pr edit --add-label "${{ inputs.label }}"
         fi
       env:
         GITHUB_TOKEN: "${{ inputs.push-to-repo-token }}"
