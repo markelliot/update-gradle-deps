@@ -30,6 +30,8 @@ inputs:
     description: the title to use for the PR
     required: true
     default: Auto-update dependencies and plugins
+  label:
+    description: The name of a label to add to the PR
 
 runs:
   using: composite
@@ -77,5 +79,9 @@ runs:
 
         # update the PR body to set versions if different than creation
         gh pr edit --body "${BODY}"
+        if [ -n "${{ inputs.label }}" ];
+        then
+          gh pr edit --add-label "${{ inputs.label }}"
+        fi
       env:
         GITHUB_TOKEN: "${{ inputs.push-to-repo-token }}"
