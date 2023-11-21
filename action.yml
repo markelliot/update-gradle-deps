@@ -32,6 +32,8 @@ inputs:
     default: Auto-update dependencies and plugins
   label:
     description: The name of a label to add to the PR
+  format:
+    default: false
 
 runs:
   using: composite
@@ -45,6 +47,10 @@ runs:
     - name: Write lockfile
       shell: bash
       run: ./gradlew --write-locks
+    - name: Format
+      if: inputs.format == 'true'
+      shell: bash
+      run: ./gradlew format
     - name: Create branch and commit changes
       if: ${{ always() }}
       shell: bash
